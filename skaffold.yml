@@ -1,0 +1,12 @@
+apiVersion: skaffold/v2beta10
+kind: Config
+build:
+  artifacts:
+  - image: gcr.io/ikenom/ecommerce-backend
+deploy:
+  helm:
+    releases:
+    - name: my-release
+      artifactOverrides:
+        image: gcr.io/ikenom/ecommerce-backend
+      chartPath: k8s
