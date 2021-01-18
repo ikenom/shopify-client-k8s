@@ -7,7 +7,8 @@ replicaCount: 1
 imageConfig:
   pullPolicy: IfNotPresent
 
-imagePullSecrets: []
+imagePullSecrets:
+  - name: docker-reg-test
 nameOverride: ""
 fullnameOverride: ""
 
