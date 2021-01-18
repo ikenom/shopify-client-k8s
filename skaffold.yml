@@ -3,10 +3,11 @@ kind: Config
 build:
   artifacts:
   - image: gcr.io/ikenom/ecommerce-backend
+
 deploy:
   helm:
     releases:
-    - name: my-release
+    - name: shopify-client
       artifactOverrides:
         image: gcr.io/ikenom/ecommerce-backend
       chartPath: k8s

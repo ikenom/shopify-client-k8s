@@ -1,6 +1,9 @@
-host = ENV["#{ENV["RELEASE_NAME"].upcase}_RABBITMQ_SERVICE_HOST"]
-port = ENV["#{ENV["RELEASE_NAME"].upcase}_RABBITMQ_SERVICE_PORT_AMQP"]
-api_port = ENV["#{ENV["RELEASE_NAME"].upcase}_RABBITMQ_SERVICE_PORT_HTTP_STATS"]
+release_name = ENV["RELEASE_NAME"].upcase
+release_name.sub! '-', '_'
+
+host = ENV["#{release_name}_RABBITMQ_SERVICE_HOST"]
+port = ENV["#{release_name}_RABBITMQ_SERVICE_PORT_AMQP"]
+api_port = ENV["#{release_name}_RABBITMQ_SERVICE_PORT_HTTP_STATS"]
 
 Hutch::Config.set(:force_publisher_confirms, true)
 
