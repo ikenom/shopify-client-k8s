@@ -6,6 +6,7 @@ metadata:
     {{- include "ikenom-app.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
+  loadBalancerIP: 34.123.101.193
   ports:
     - port: {{ .Values.service.port }}
       targetPort: http
