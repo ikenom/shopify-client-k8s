@@ -11,7 +11,6 @@ deploy:
   helm:
     releases:
     - name: shopify-client
-      namespace: default
       artifactOverrides:
         image: ghcr.io/ikenom/shopify-client
       chartPath: charts
@@ -20,3 +19,4 @@ deploy:
         - ./charts/values.yaml
       imageStrategy:
         helm: {}
+      createNamespace: true
