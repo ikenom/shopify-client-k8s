@@ -30,4 +30,3 @@ jobs:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
           version: v1.1.1
-          charts_dir: .
