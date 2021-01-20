@@ -1,0 +1,9 @@
+#!/bin/sh
+
+kubectl delete secret ikenom-gh-reg
+
+kubectl create secret docker-registry ikenom-gh-reg \
+    --docker-username=$DOCKER_USERNAME \
+    --docker-password=$DOCKER_PASSWORD \
+    --docker-server=$SERVER \
+    --namespace $CLUSTER_NAMESPACE
