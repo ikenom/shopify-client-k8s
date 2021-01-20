@@ -30,6 +30,3 @@ dependencies:
     condition: rabbitmq.enabled
     tags:
       - rabbitmq
-  - name: shopify-client
-    version: 0.1.0
-    repository: https://github.com/ikenom/shopify-client
