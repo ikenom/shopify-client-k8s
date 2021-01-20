@@ -14,9 +14,9 @@ deploy:
       namespace: default
       artifactOverrides:
         image: ghcr.io/ikenom/shopify-client
-      chartPath: k8s
+      chartPath: charts
       skipBuildDependencies: false
       valuesFiles:
-        - ./k8s/values.yaml
+        - ./charts/values.yaml
       imageStrategy:
         helm: {}

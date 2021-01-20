@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'charts/**'
 
 jobs:
   release:
@@ -29,4 +31,4 @@ jobs:
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
-          charts_dir: k8s
+          version: v1.1.1
