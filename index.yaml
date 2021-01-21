@@ -2,6 +2,28 @@ apiVersion: v1
 entries:
   shopify-client:
   - apiVersion: v2
+    created: "2021-01-21T07:19:06.536198323Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - mongodb
+      version: ~10.3.6
+    - condition: rabbitmq.enabled
+      name: rabbitmq
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - rabbitmq
+      version: ~8.6.3
+    description: A Helm chart for Kubernetes
+    digest: 5f3df6eec286f743c3c1a31e0252e6f89e672f6c5a93a1a0708273f4a90c85f3
+    name: shopify-client
+    type: application
+    urls:
+    - https://github.com/ikenom/shopify-client-k8s/releases/download/shopify-client-0.2.5/shopify-client-0.2.5.tgz
+    version: 0.2.5
+  - apiVersion: v2
     appVersion: 0.2.4
     created: "2021-01-21T07:07:05.601434317Z"
     dependencies:
