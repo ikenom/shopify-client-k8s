@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: shopify-client
+  repository: ghcr.io/ikenom/shopify-client
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "0ce0e65"
