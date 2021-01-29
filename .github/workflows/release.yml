@@ -11,26 +11,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Configure Git
+      - uses: actions/checkout@v2
+      - name: Build image
         run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
-      - name: Install Helm
-        uses: azure/setup-helm@v1
-        with:
-          version: v3.4.0
-
-      - name: Setup Environment
-        run: |
-          ${GITHUB_WORKSPACE}/scripts/ci_setup
-
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.1.0
-        env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        with:
-          version: v1.1.1
+          docker login ghcr.io -u $GITHUB_ACTOR --password-stdin <<< ${{ secrets.GITHUB_TOKEN }}
+          docker build . --tag ghcr.io/ikenom/${{ github.repository }}:$GITHUB_SHA
+          docker push ghcr.io/ikenom/${{ github.repository }}:$GITHUB_SHA
