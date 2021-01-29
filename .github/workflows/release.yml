@@ -31,6 +31,7 @@ jobs:
         run: |
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email 'your-username@users.noreply.github.com'
+          git fetch
           git checkout gh-pages
 
           helm repo index --url https://ikenom.github.io/${{ github.repository }} --merge index.yaml .
