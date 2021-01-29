@@ -25,7 +25,7 @@ jobs:
 
       - name: Pacakage Helm
         run: |
-          helm package --app-version $GITHUB_SHA chart
+          helm package -u --app-version $GITHUB_SHA chart
 
       - name: Create Index and push to GH pages
         run: |
