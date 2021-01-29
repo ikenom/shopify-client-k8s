@@ -13,10 +13,10 @@ deploy:
     - name: shopify-client
       artifactOverrides:
         image: ghcr.io/ikenom/shopify-client
-      chartPath: charts/shopify-client
+      chartPath: chart
       skipBuildDependencies: false
       valuesFiles:
-        - ./charts/shopify-client/values.yaml
+        - ./chart/values.yaml
       imageStrategy:
         helm: {}
       createNamespace: true

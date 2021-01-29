@@ -1,3 +1,0 @@
-#!/bin/sh
-
-skaffold dev -n $CLUSTER_NAMESPACE

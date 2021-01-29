@@ -1,2 +1,1 @@
-
-docker run -e RELEASE_NAME=local -e LOCAL_MONGODB_SERVICE_HOST=localhost -e LOCAL_MONGODB_SERVICE_PORT=3002 ghcr.io/ikenom/shopify-client:latest
+docker-compose up
