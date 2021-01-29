@@ -1,4 +1,4 @@
-name: Release Charts
+name: Release
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
         run: |
           helm package -u --app-version $GITHUB_SHA chart
 
-      - name: Create Index and push to GH pages
+      - name: Create Helm index and push to GH pages
         run: |
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email 'your-username@users.noreply.github.com'
