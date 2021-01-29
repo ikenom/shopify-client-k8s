@@ -3,6 +3,6 @@ class TestConsumer
   consume 'ikenna.test'
 
   def process(message)
-    ExampleJob.perform_later
+    pp "Ikenna Omekam"
   end
 end

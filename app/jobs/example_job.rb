@@ -4,5 +4,6 @@ class ExampleJob < ApplicationJob
 
   def perform(*args)
     Test.create!
+    pp "hit"
   end
 end
