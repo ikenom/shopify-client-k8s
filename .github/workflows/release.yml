@@ -12,6 +12,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install Python
+        uses: actions/setup-python@v1
+
+      - name: Install bump2version and yq
+        run: |
+          pip install --upgrade bump2version
+          pip install --upgrade yq
+
+      - name: Bump Helm version
+        run: |
+          VERSION=$(yq '.version' < chart/Chart.yaml)
+          bump2version --commit --current-version $VERSION patch chart/Chart.yaml
+          git push
+
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
@@ -40,17 +54,3 @@ jobs:
           git commit -am "Updating helm package"
           git push
           git checkout master
-
-      - name: Install Python
-        uses: actions/setup-python@v1
-
-      - name: Install bump2version and yq
-        run: |
-          pip install --upgrade bump2version
-          pip install --upgrade yq
-
-      - name: Bump Helm version
-        run: |
-          VERSION=$(yq '.version' < chart/Chart.yaml)
-          bump2version --commit --current-version $VERSION patch chart/Chart.yaml
-          git push
