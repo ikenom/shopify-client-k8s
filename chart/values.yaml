@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/ikenom/shopify-client
+  repository: ghcr.io/ikenom/shopify-client-k8s
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0ce0e65"
+  tag: ""
 
 imagePullSecrets:
   - name: ikenom-gh-reg
