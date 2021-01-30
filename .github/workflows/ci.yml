@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build and push image
+      run: |
+        docker login containers.pkg.github.com -u $GITHUB_ACTOR --password-stdin <<< ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+        docker build . --tag containers.pkg.github.com/for-testing/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}:$GITHUB_SHA
+        docker push containers.pkg.github.com/for-testing/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}:$GITHUB_SHA
