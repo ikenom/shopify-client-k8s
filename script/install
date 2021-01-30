@@ -1,1 +1,1 @@
-docker-compose run app bundle install --no-cache
+docker-compose run app bundle install

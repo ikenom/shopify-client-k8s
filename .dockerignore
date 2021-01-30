@@ -3,7 +3,7 @@ chart/
 .bundle
 .circleci
 .git
-vendor/bundle
+vendor/*
 log/*
 !/log/.keep
 tmp/*

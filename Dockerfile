@@ -2,6 +2,8 @@ FROM ruby:2.7.1
 WORKDIR /app
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
+ENV GEM_HOME /app/vendor/bundle
+
 RUN bundle install
 RUN bundle binstubs rspec-core rubocop
 COPY . /app
