@@ -39,6 +39,7 @@ jobs:
           helm repo index --url https://${{ github.event.repository.owner.login }}.github.io/${{ github.event.repository.name }} --merge index.yaml .
           git commit -am "Updating helm package"
           git push
+          git checkout master
 
       - name: Install Python
         uses: actions/setup-python@v1
@@ -49,5 +50,5 @@ jobs:
 
       - name: Bump Helm version
         run: |
-          bump2version --commit --current-version 0.2.9 patch  ${GITHUB_WORKSPACE}/chart/Chart.yaml
+          bump2version --commit --current-version 0.2.9 patch chart/Chart.yaml
           git push
