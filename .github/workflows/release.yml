@@ -49,5 +49,5 @@ jobs:
 
       - name: Bump Helm version
         run: |
-          bump2version --commit --current-version 0.2.7 patch chart/Chart.yaml
+          bump2version --commit --current-version 0.2.9 patch chart/Chart.yaml
           git push
