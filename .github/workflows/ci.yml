@@ -28,5 +28,5 @@ jobs:
       run: |
         script/test
       env:
-        IMAGE_NAME: ghcr.io/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}:$GITHUB_SHA
+        IMAGE_NAME: ghcr.io/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}
         IMAGE_TAG: $GITHUB_SHA
