@@ -27,6 +27,7 @@ jobs:
 
       - name: Bump Helm version
         run: |
+          git pull
           VERSION=$(yq '.version' < chart/Chart.yaml)
           bump2version --commit --current-version $VERSION patch chart/Chart.yaml
           git push
