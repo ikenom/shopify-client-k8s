@@ -12,6 +12,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Configure git
+        run: |
+          git config --global user.name "$GITHUB_ACTOR"
+          git config --global user.email '$GITHUB_ACTOR@users.noreply.github.com'
+
       - name: Install Python
         uses: actions/setup-python@v1
 
@@ -45,8 +50,6 @@ jobs:
 
       - name: Create Helm index and push to GH pages
         run: |
-          git config --global user.name "$GITHUB_ACTOR"
-          git config --global user.email '$GITHUB_ACTOR@users.noreply.github.com'
           git fetch
           git checkout gh-pages
 
