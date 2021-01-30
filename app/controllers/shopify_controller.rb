@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ShopifyController < ApplicationController
   def execute
-    render status: 200
+    render status: :ok
   end
 end

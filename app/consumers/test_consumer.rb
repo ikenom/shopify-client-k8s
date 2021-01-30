@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class TestConsumer
   include Hutch::Consumer
-  consume 'ikenna.test'
+  consume "ikenna.test"
 
-  def process(message)
+  def process(_message)
     pp "Ikenna Omekam"
   end
 end
