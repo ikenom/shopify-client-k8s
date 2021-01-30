@@ -54,7 +54,7 @@ jobs:
           git pull
           git checkout gh-pages
 
-          helm repo index --url https://${{ github.event.repository.owner.login }}.github.io/${{ github.event.repository.name }} --merge index.yaml .
+          docker run -v $(pwd):/app quay.io/helmpack/chart-releaser:v1.1.1 cr index -p /app -o ${{ github.event.repository.owner.login }} -r ${{ github.event.repository.name }} -i /app
           git commit -am "Updating helm package"
           git push
           git checkout master
