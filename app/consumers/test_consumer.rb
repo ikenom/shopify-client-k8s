@@ -5,6 +5,6 @@ class TestConsumer
   consume "ikenna.test"
 
   def process(_message)
-    pp "Ikenna Omekam"
+    Rails.logger.info "Ikenna Omekam"
   end
 end

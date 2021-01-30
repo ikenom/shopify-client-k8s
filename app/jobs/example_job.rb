@@ -6,6 +6,6 @@ class ExampleJob < ApplicationJob
 
   def perform(*_args)
     Test.create!
-    pp "Ikenna Omekam"
+    Rails.logger.info "Ikenna Omekam"
   end
 end
