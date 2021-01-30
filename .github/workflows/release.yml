@@ -20,8 +20,8 @@ jobs:
       - name: Build and push image
         run: |
           docker login ghcr.io -u $GITHUB_ACTOR --password-stdin <<< ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
-          docker build . --tag ghcr.io/${{ github.event.repository.name }}:$GITHUB_SHA
-          docker push ghcr.io/${{ github.event.repository.name }}:$GITHUB_SHA
+          docker build . --tag ghcr.io/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}:$GITHUB_SHA
+          docker push ghcr.io/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}:$GITHUB_SHA
 
       - name: Pacakage and push Helm
         run: |
@@ -32,11 +32,11 @@ jobs:
       - name: Create Helm index and push to GH pages
         run: |
           git config --global user.name "$GITHUB_ACTOR"
-          git config --global user.email 'your-username@users.noreply.github.com'
+          git config --global user.email '$GITHUB_ACTOR@users.noreply.github.com'
           git fetch
           git checkout gh-pages
 
-          helm repo index --url https://ikenom.github.io/${{ github.event.repository.name }} --merge index.yaml .
+          helm repo index --url https://${{ github.event.repository.owner.login }}.github.io/${{ github.event.repository.name }} --merge index.yaml .
           git commit -am "Updating helm package"
           git push
 
