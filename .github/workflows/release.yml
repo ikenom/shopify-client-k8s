@@ -51,7 +51,7 @@ jobs:
 
       - name: Create Helm index and push to GH pages
         run: |
-          git fetch
+          git pull
           git checkout gh-pages
 
           helm repo index --url https://${{ github.event.repository.owner.login }}.github.io/${{ github.event.repository.name }} --merge index.yaml .
