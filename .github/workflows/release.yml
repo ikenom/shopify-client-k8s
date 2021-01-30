@@ -44,11 +44,13 @@ jobs:
       - name: Install Python
         uses: actions/setup-python@v1
 
-      - name: Install bump2version
+      - name: Install bump2version and yq
         run: |
           pip install --upgrade bump2version
+          pip install --upgrade yq
 
       - name: Bump Helm version
         run: |
-          bump2version --commit --current-version 0.2.9 patch chart/Chart.yaml
+          VERSION=$(yq '.version' < chart/Chart.yaml)
+          bump2version --commit --current-version $VERSION patch chart/Chart.yaml
           git push
