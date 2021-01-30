@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class TestJob < ApplicationJob
   # Set the Queue as Default
   queue_as :default
 
-  def perform(*args)
+  def perform(*_args)
     Test.create!
-    pp "Ikenna Omekam"
+    Rails.logger.info "Ikenna Omekam"
   end
 end

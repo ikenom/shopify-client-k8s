@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 release_name = ENV["RELEASE_NAME"].upcase
-release_name.sub! '-', '_'
+release_name.sub! "-", "_"
 
 host = ENV["#{release_name}_RABBITMQ_SERVICE_HOST"]
 port = ENV["#{release_name}_RABBITMQ_SERVICE_PORT_AMQP"]
