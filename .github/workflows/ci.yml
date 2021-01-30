@@ -12,5 +12,5 @@ jobs:
     - name: Build and push image
       run: |
         docker login containers.pkg.github.com -u $GITHUB_ACTOR --password-stdin <<< ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
-        docker build . --tag containers.pkg.github.com/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}:$GITHUB_SHA
-        docker push containers.pkg.github.com/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}:$GITHUB_SHA
+        docker build . --tag containers.pkg.github.com/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}/${{ github.event.repository.name }}:$GITHUB_SHA
+        docker push containers.pkg.github.com/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}/${{ github.event.repository.name }}:$GITHUB_SHA
