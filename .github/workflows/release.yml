@@ -29,8 +29,8 @@ jobs:
 
       # - name: Create Helm index and push to GH pages
       #   run: |
-      #     git config --global user.name "$GITHUB_ACTOR"
-      #     git config --global user.email 'your-username@users.noreply.github.com'
+          # git config --global user.name "$GITHUB_ACTOR"
+          # git config --global user.email 'your-username@users.noreply.github.com'
       #     git fetch
       #     git checkout gh-pages
 
@@ -47,5 +47,7 @@ jobs:
 
       - name: Bump Helm version
         run: |
+          git config --global user.name "$GITHUB_ACTOR"
+          git config --global user.email 'your-username@users.noreply.github.com'
           bump2version --commit --current-version 0.2.7 patch chart/Chart.yaml
           git push
