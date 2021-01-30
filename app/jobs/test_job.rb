@@ -1,4 +1,4 @@
-class ExampleJob < ApplicationJob
+class TestJob < ApplicationJob
   # Set the Queue as Default
   queue_as :default
 

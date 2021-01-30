@@ -2,7 +2,7 @@ apiVersion: skaffold/v2beta10
 kind: Config
 build:
   artifacts:
-  - image: ghcr.io/ikenom/shopify-client
+  - image: ghcr.io/ikenom/shopify-client-k8s
     sync:
         infer:
         - 'app/**/*.rb'
@@ -12,7 +12,7 @@ deploy:
     releases:
     - name: shopify-client
       artifactOverrides:
-        image: ghcr.io/ikenom/shopify-client
+        image: ghcr.io/ikenom/shopify-client-k8s
       chartPath: chart
       skipBuildDependencies: false
       valuesFiles:
