@@ -13,7 +13,7 @@ jobs:
       run: |
         docker login ghcr.io -u $GITHUB_ACTOR --password-stdin <<< ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
         docker build \
-          .\
+          . \
           --tag ghcr.io/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}/${{ github.event.repository.name }}:$GITHUB_SHA \
           --cache-from ghcr.io/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}:latest \
           --label org.opencontainers.image.source https://github.com/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
