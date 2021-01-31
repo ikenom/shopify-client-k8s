@@ -6,5 +6,6 @@ class TestConsumer
 
   def process(_message)
     Rails.logger.info "Ikenna Omekam"
+    ExampleJob.perform_later
   end
 end
