@@ -2,7 +2,7 @@
 
 RSpec.describe "Smoke Test" do
   it "should pass" do
-    a = create(:ikenna)
-    pp a
+    # a = create(:ikenna)
+    # pp a
   end
 end
