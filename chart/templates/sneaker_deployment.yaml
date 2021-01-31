@@ -37,7 +37,7 @@ spec:
             - name: http
               containerPort: 3000
               protocol: TCP
-          command: ["rake"]
+          command: ["bin/rake"]
           args:
             - "sneakers:run"
           resources:
