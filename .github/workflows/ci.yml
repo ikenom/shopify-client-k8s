@@ -41,6 +41,7 @@ jobs:
     - name: Run linter
       run: |
         docker login ghcr.io -u $GITHUB_ACTOR --password-stdin <<< ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+        docker pull ghcr.io/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}:latest
         script/lint
       env:
         IMAGE_NAME: ghcr.io/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
