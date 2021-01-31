@@ -12,8 +12,37 @@ jobs:
     - name: Build and push image
       run: |
         docker login ghcr.io -u $GITHUB_ACTOR --password-stdin <<< ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+        docker pull ghcr.io/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}:latest
         docker build . \
-          --tag ghcr.io/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}/${{ github.event.repository.name }}:$GITHUB_SHA \
+          --tag ghcr.io/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}:$GITHUB_SHA \
           --cache-from ghcr.io/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}:latest \
           --label org.opencontainers.image.source=https://github.com/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
-        docker push ghcr.io/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}/${{ github.event.repository.name }}:$GITHUB_SHA
+        docker push ghcr.io/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}:$GITHUB_SHA
+
+  tests:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run tests
+      run: |
+        docker login ghcr.io -u $GITHUB_ACTOR --password-stdin <<< ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+        export IMAGE_TAG=$GITHUB_SHA
+        docker-compose up -d
+        script/test
+        docker-compose down
+      env:
+        IMAGE_NAME: ghcr.io/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run linter
+      run: |
+        docker login ghcr.io -u $GITHUB_ACTOR --password-stdin <<< ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+        export IMAGE_TAG=$GITHUB_SHA
+        script/lint
+      env:
+        IMAGE_NAME: ghcr.io/${{ github.event.repository.owner.login }}/for-testing/${{ github.event.repository.name }}

@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class OrderCreated
   def init(id:)
     @id = id
   end
 
   private
+
   attr_reader :id
 end
-
 
 # omnivore ticket
 # auto_send
